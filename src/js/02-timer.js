@@ -13,6 +13,7 @@ const daysElement = body.querySelector('[data-days]');
 const hoursElement = body.querySelector('[data-hours]');
 const minutesElement = body.querySelector('[data-minutes]');
 const secondsElement = body.querySelector('[data-seconds]');
+const fields = body.querySelectorAll('.field');
 
 let selDate;
 
@@ -53,6 +54,11 @@ function onStartClick() {
     hoursElement.textContent = hour;
     minutesElement.textContent = minute;
     secondsElement.textContent = second;
+  }, 1000);
+  setTimeout(() => {
+    fields.forEach(field => {
+      field.classList.add('on-start');
+    });
   }, 1000);
 }
 
