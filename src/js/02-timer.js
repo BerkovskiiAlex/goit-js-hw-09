@@ -9,10 +9,10 @@ const body = document.querySelector('body');
 const input = body.querySelector('#datetime-picker');
 const start = body.querySelector('button');
 start.addEventListener('click', onStartClick);
-const daysElement = body.querySelector('[data-days]');
-const hoursElement = body.querySelector('[data-hours]');
-const minutesElement = body.querySelector('[data-minutes]');
-const secondsElement = body.querySelector('[data-seconds]');
+// const daysElement = body.querySelector('[data-days]');
+// const hoursElement = body.querySelector('[data-hours]');
+// const minutesElement = body.querySelector('[data-minutes]');
+// const secondsElement = body.querySelector('[data-seconds]');
 const fields = body.querySelectorAll('.field');
 
 let selDate;
@@ -45,15 +45,20 @@ function onStartClick() {
   const date = setInterval(() => {
     const timeDifference = selDate - new Date();
     const convertedDates = convertMs(timeDifference);
-    const day = addLeadingZero(convertedDates.days);
-    const hour = addLeadingZero(convertedDates.hours);
-    const minute = addLeadingZero(convertedDates.minutes);
-    const second = addLeadingZero(convertedDates.seconds);
+    for (key in convertedDates) {
+      body.querySelector(`[data-${key}]`).textContent = addLeadingZero(
+        convertedDates[key]
+      );
+    }
+    // const day = addLeadingZero(convertedDates.days);
+    // const hour = addLeadingZero(convertedDates.hours);
+    // const minute = addLeadingZero(convertedDates.minutes);
+    // const second = addLeadingZero(convertedDates.seconds);
 
-    daysElement.textContent = day;
-    hoursElement.textContent = hour;
-    minutesElement.textContent = minute;
-    secondsElement.textContent = second;
+    // daysElement.textContent = day;
+    // hoursElement.textContent = hour;
+    // minutesElement.textContent = minute;
+    // secondsElement.textContent = second;
   }, 1000);
   setTimeout(() => {
     fields.forEach(field => {
