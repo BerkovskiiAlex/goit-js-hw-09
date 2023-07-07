@@ -13,13 +13,13 @@ function onButtonClick(event) {
     interval = setInterval(() => {
       body.style.backgroundColor = getRandomHexColor();
     }, 1000);
-    start.disabled = true;
+    event.target.disabled = true;
     stop.disabled = false;
   }
   if (dataset.stop === '') {
     clearInterval(interval);
     start.disabled = false;
-    stop.disabled = true;
+    event.target.disabled = true;
   }
 }
 
